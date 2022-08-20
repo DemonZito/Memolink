@@ -6,15 +6,12 @@ import {
   ReactPortal,
 } from "react";
 import "./App.css";
-import { QuestionsPanel } from "./QuestionsPanel";
+import { Questions } from "./pages/Questions";
 
 function App() {
-  const files = ["Culture Fit Questions", "React Questions"];
-  const list = files.map((f) => <li key={f}>{f}</li>);
   return (
     <>
-      <ul>{list}</ul>
-      <QuestionsPanel />
+      <Questions/>
     </>
   );
 }

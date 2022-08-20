@@ -7,15 +7,16 @@ import {
 } from "@mui/material";
 import React, { useRef } from "react";
 
-export const QuestionsPanel = () => {
-  const questions = useRef(require("./assets/cultureFitQuestions.json"));
+export const QuestionsPanel = (props: any) => {
+  const questions = props.chosenQuestions;
+
   const [questionIndex, setQuestionIndex] = React.useState<number>(0);
   const [answerText, setAnswerText] = React.useState<string>("");
 
-  function NextQuestion() {
+  function ChangeQuestion(amount: number) {
     questions.current[questionIndex].answer = answerText;
-    setAnswerText("");
-    setQuestionIndex(questionIndex + 1);
+    setAnswerText(questions.current[questionIndex+amount].answer);
+    setQuestionIndex(questionIndex + amount);
   }
 
   function SubmitAnswers() {
@@ -28,6 +29,7 @@ export const QuestionsPanel = () => {
     );
     el.download = "answers.json";
     el.click();
+    props.backToMenu();
   }
 
   console.log(questionIndex, questions.current.length);
@@ -65,25 +67,13 @@ export const QuestionsPanel = () => {
             setAnswerText(e.target.value);
           }}
           error={answerText.length < 1000}
+          helperText={answerText.length < 1000 ? "Answer must be at least 1000 characters long" : ""}
           style={{
             width: "calc(100% - 10px)",
             resize: "vertical",
           }}
         />
-        {questionIndex + 1 < questions.current.length && (
-          <Button
-            style={{
-              alignSelf: "end",
-              marginTop: 5,
-              marginRight: 5,
-              background: "#a8ffe3",
-            }}
-            variant="contained"
-            onClick={NextQuestion}
-          >
-            Next
-          </Button>
-        )}
+        <span style={{display:"flex", width:"100%", justifyContent:"space-between", flexDirection: "row-reverse"}}>
         {questionIndex + 1 === questions.current.length && (
           <Button
             style={{
@@ -94,10 +84,39 @@ export const QuestionsPanel = () => {
             }}
             variant="contained"
             onClick={SubmitAnswers}
+            disabled={answerText.length < 1000}
           >
             Submit
           </Button>
         )}
+        {questionIndex > 0 && (
+          <Button
+            style={{
+              marginTop: 5,
+              marginLeft: 5,
+              background: "#a8ffe3",
+            }}
+            variant="contained"
+            onClick={() => {ChangeQuestion(-1)}}
+          >
+            Back
+          </Button>
+        )}
+        {questionIndex + 1 < questions.current.length && (
+          <Button
+            style={{
+              marginTop: 5,
+              marginRight: 5,
+              background: "#a8ffe3",
+            }}
+            variant="contained"
+            onClick={() => {ChangeQuestion(1)}}
+            disabled={answerText.length < 1000}
+          >
+            Next
+          </Button>
+        )}
+        </span>
       </div>
     </div>
   );
