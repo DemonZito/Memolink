@@ -5,13 +5,27 @@ import {
   TextareaAutosize,
   TextField,
 } from "@mui/material";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 
 export const QuestionsPanel = (props: any) => {
-  const questions = props.chosenQuestions;
-
+  const questions = useRef([{question: "", answer: ""}]);
+  
   const [questionIndex, setQuestionIndex] = React.useState<number>(0);
   const [answerText, setAnswerText] = React.useState<string>("");
+  const [questionsSet, setQuestionsSet] = React.useState<boolean>(false);
+  
+  useEffect(() => {
+    questions.current = props.chosenQuestions.current;
+    Shuffle(questions.current);
+    setQuestionsSet(true);
+  },[])
+
+  function Shuffle(array: any) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
 
   function ChangeQuestion(amount: number) {
     questions.current[questionIndex].answer = answerText;
@@ -32,7 +46,7 @@ export const QuestionsPanel = (props: any) => {
     props.backToMenu();
   }
 
-  console.log(questionIndex, questions.current.length);
+  console.log(questions);
 
   return (
     <div
