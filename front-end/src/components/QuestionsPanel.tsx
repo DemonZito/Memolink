@@ -8,28 +8,28 @@ import {
 import React, { useEffect, useRef } from "react";
 
 export const QuestionsPanel = (props: any) => {
-  const questions = useRef([{question: "", answer: ""}]);
-  
+  const questions = useRef([{ question: "", answer: "" }]);
+
   const [questionIndex, setQuestionIndex] = React.useState<number>(0);
   const [answerText, setAnswerText] = React.useState<string>("");
   const [questionsSet, setQuestionsSet] = React.useState<boolean>(false);
-  
+
   useEffect(() => {
     questions.current = props.chosenQuestions.current;
     Shuffle(questions.current);
     setQuestionsSet(true);
-  },[])
+  }, [props.chosenQuestions]);
 
   function Shuffle(array: any) {
     for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
     }
   }
 
   function ChangeQuestion(amount: number) {
     questions.current[questionIndex].answer = answerText;
-    setAnswerText(questions.current[questionIndex+amount].answer);
+    setAnswerText(questions.current[questionIndex + amount].answer);
     setQuestionIndex(questionIndex + amount);
   }
 
@@ -58,80 +58,115 @@ export const QuestionsPanel = (props: any) => {
       }}
       className="App"
     >
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          background: "pearl",
-          width: 500,
-          height: 500,
-          flexDirection: "column",
-          border: "1px black solid",
-          boxShadow: "0px 0px 20px 7px #a8ffe3",
-        }}
-      >
-        <CardHeader title={questions.current[questionIndex].question} />
-        <TextField
-          multiline
-          placeholder="Answer here"
-          maxRows={10}
-          value={answerText}
-          onChange={(e) => {
-            setAnswerText(e.target.value);
-          }}
-          error={answerText.length < 1000}
-          helperText={answerText.length < 1000 ? "Answer must be at least 1000 characters long" : ""}
+      {questionsSet && (
+        <div
           style={{
-            width: "calc(100% - 10px)",
-            resize: "vertical",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            background: "pearl",
+            width: 500,
+            height: 500,
+            flexDirection: "column",
+            border: "1px black solid",
+            boxShadow: "0px 0px 20px 7px #a8ffe3",
           }}
-        />
-        <span style={{display:"flex", width:"100%", justifyContent:"space-between", flexDirection: "row-reverse"}}>
-        {questionIndex + 1 === questions.current.length && (
-          <Button
-            style={{
-              alignSelf: "end",
-              marginTop: 5,
-              marginRight: 5,
-              background: "#a8ffe3",
+        >
+          <CardHeader title={questions.current[questionIndex].question} />
+          <TextField
+            multiline
+            placeholder="Answer here"
+            maxRows={10}
+            value={answerText}
+            onChange={(e) => {
+              setAnswerText(e.target.value);
             }}
-            variant="contained"
-            onClick={SubmitAnswers}
-            disabled={answerText.length < 1000}
-          >
-            Submit
-          </Button>
-        )}
-        {questionIndex > 0 && (
-          <Button
+            error={answerText.length < 100}
+            helperText={
+              answerText.length < 100
+                ? "Answer must be at least 100 characters long"
+                : ""
+            }
             style={{
-              marginTop: 5,
-              marginLeft: 5,
-              background: "#a8ffe3",
+              width: "calc(100% - 10px)",
+              resize: "vertical",
             }}
-            variant="contained"
-            onClick={() => {ChangeQuestion(-1)}}
-          >
-            Back
-          </Button>
-        )}
-        {questionIndex + 1 < questions.current.length && (
-          <Button
+          />
+          <span
             style={{
-              marginTop: 5,
-              marginRight: 5,
-              background: "#a8ffe3",
+              display: "flex",
+              width: "100%",
+              justifyContent: "space-between",
+              flexDirection: "row",
             }}
-            variant="contained"
-            onClick={() => {ChangeQuestion(1)}}
-            disabled={answerText.length < 1000}
           >
-            Next
-          </Button>
-        )}
-        </span>
-      </div>
+            {questionIndex + 1 === questions.current.length && (
+              <Button
+                style={{
+                  alignSelf: "end",
+                  marginTop: 5,
+                  marginRight: 5,
+                  background: "#a8ffe3",
+                }}
+                variant="contained"
+                onClick={SubmitAnswers}
+                disabled={answerText.length < 100}
+              >
+                Submit
+              </Button>
+            )}
+            {questionIndex === 0 && (
+              <Button
+                style={{
+                  marginTop: 5,
+                  marginLeft: 5,
+                  background: "#a8ffe3",
+                }}
+                variant="contained"
+                onClick={() => {
+                  props.backToMenu();
+                }}
+              >
+                Exit
+              </Button>
+            )}
+            {questionIndex > 0 && (
+              <Button
+                style={{
+                  marginTop: 5,
+                  marginLeft: 5,
+                  background: "#a8ffe3",
+                }}
+                variant="contained"
+                onClick={() => {
+                  ChangeQuestion(-1);
+                }}
+              >
+                Back
+              </Button>
+            )}
+            <p>
+              {questionIndex}/{questions.current.length}
+            </p>
+            {questionIndex + 1 < questions.current.length && (
+              <Button
+                style={{
+                  marginTop: 5,
+                  marginRight: 5,
+                  background: "#a8ffe3",
+                }}
+                variant="contained"
+                onClick={() => {
+                  ChangeQuestion(1);
+                }}
+                disabled={answerText.length < 100}
+              >
+                Next
+              </Button>
+            )}
+          </span>
+        </div>
+      )}
     </div>
   );
 };

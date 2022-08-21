@@ -14,5 +14,293 @@
     {
         "question":"What's the biggest problem in most offices today?",
         "answer":""
+    },
+    {
+        "question":"What did you like most/least about your last company?",
+        "answer":""
+    },
+    {
+        "question":"Where/when/how do you do your best work?",
+        "answer":""
+    },
+    {
+        "question":"When was the last time you made a big mistake at work?",
+        "answer":""
+    },
+    {
+        "question":"How could a manager best support you?",
+        "answer":""
+    },
+    {
+        "question":"Describe the best/worst team-building exercise you have ever participated in.",
+        "answer":""
+    },
+    {
+        "question":"How do you handle stress or tight deadlines?",
+        "answer":""
+    },
+    {
+        "question":"What are your plans for the next five years?",
+        "answer":""
+    },
+    {
+        "question":"What three things do you need to succeed in this position?",
+        "answer":""
+    },
+    {
+        "question":"What blogs or websites do you visit regularly?",
+        "answer":""
+    },
+    {
+        "question":"How have you changed over the last five years?",
+        "answer":""
+    },
+    {
+        "question":"What motivates you to do your best work?",
+        "answer":""
+    },
+    {
+        "question":"How do you prefer to communicate with coworkers?",
+        "answer":""
+    },
+    {
+        "question":"What has been the most valuable lesson of your professional career?",
+        "answer":""
+    },
+    {
+        "question":"Describe your dream job",
+        "answer":""
+    },
+    {
+        "question":"What does a successful company culture look like to you?",
+        "answer":""
+    },
+    {
+        "question":"What most appeals to you about this role?",
+        "answer":""
+    },
+    {
+        "question":"How will this role challenge you?",
+        "answer":""
+    },
+    {
+        "question":"Who inspires you and why?",
+        "answer":""
+    },
+    {
+        "question":"How would you describe our company culture?",
+        "answer":""
+    },
+    {
+        "question":"What superpower will you bring to our company?",
+        "answer":""
+    },
+    {
+        "question":"How do you give/respond to critique?",
+        "answer":""
+    },
+    {
+        "question":"What three words would a current manager/colleague/direct report use to describe you?",
+        "answer":""
+    },
+    {
+        "question":"What tools or apps allow you to work more efficiently?",
+        "answer":""
+    },
+    {
+        "question":"Which of our company's core values do you most/least identify with?",
+        "answer":""
+    },
+    {
+        "question":"What does work-life balance mean to you?",
+        "answer":""
+    },
+    {
+        "question":"How do you manage conflict with coworkers?",
+        "answer":""
+    },
+    {
+        "question":"Describe a time when you exceeded people's expectations?",
+        "answer":""
+    },
+    {
+        "question":"What role does kindness/empathy/humour play at work?",
+        "answer":""
+    },
+    {
+        "question":"What does your decision-making process look like?",
+        "answer":""
+    },
+    {
+        "question":"When was the last time you took a risk professionally?",
+        "answer":""
+    },
+    {
+        "question":"Would you rather work alone or with a team?",
+        "answer":""
+    },
+    {
+        "question":"How would you describe your leadership style?",
+        "answer":""
+    },
+    {
+        "question":"What would be your ideal work schedule?",
+        "answer":""
+    },
+    {
+        "question":"How do you stay organized?",
+        "answer":""
+    },
+    {
+        "question":"What would you change about our office/website/hiring process/business model?",
+        "answer":""
+    },
+    {
+        "question":"Why did you choose to apply here?",
+        "answer":""
+    },
+    {
+        "question":"Would you describe yourself as an introvert or extrovert? Why?",
+        "answer":""
+    },
+    {
+        "question":"Can you describe a time you faced a challenge at work and how you handled it?",
+        "answer":""
+    },
+    {
+        "question":"What type of learner are you? (visual, kinesthetic, etc.)",
+        "answer":""
+    },
+    {
+        "question":"Do you prefer to be looped-in for every step of the decision making process or only once a decision is made?",
+        "answer":""
+    },
+    {
+        "question":"What's your secret to productivity?",
+        "answer":""
+    },
+    {
+        "question":"Would you describe yourself as a leader or a follower?",
+        "answer":""
+    },
+    {
+        "question":"Can you tell us about a leader you've worked with that you really admire and why?",
+        "answer":""
+    },
+    {
+        "question":"What advice would you give to someone starting out in your career?",
+        "answer":""
+    },
+    {
+        "question":"At this stage in your career, do you see yourself as more of a mentee or a mentor?",
+        "answer":""
+    },
+    {
+        "question":"What management style motivates you to do your best work?",
+        "answer":""
+    },
+    {
+        "question":"What are you passionate about?",
+        "answer":""
+    },
+    {
+        "question":"What's a lesson you've learned from the workplace?",
+        "answer":""
+    },
+    {
+        "question":"Tell me about a time when you had to work closely with someone whose personality was very different from yours?",
+        "answer":""
+    },
+    {
+        "question":"Give me an example of a time you faced a conflict with a coworker. How did you handle that?",
+        "answer":""
+    },
+    {
+        "question":"Describe a time when you had to step up and demonstrate leadership skills",
+        "answer":""
+    },
+    {
+        "question":"Tell me about a time you made a mistake and wish you'd handled a situation with a colleague differently.",
+        "answer":""
+    },
+    {
+        "question":"Tell me about a time you needed to get information from someone who wasn't very responsive. What did you do?",
+        "answer":""
+    },
+    {
+        "question":"Tell me about a time you were under a lot of pressure at work or at school. What was going on, and how did you get through it?",
+        "answer":""
+    },
+    {
+        "question":"Describe a time when your team or company was undergoing some change. How did that impact you, and how did you adapt?",
+        "answer":""
+    },
+    {
+        "question":"Tell me about settling into your last job. What did you do to learn the ropes?",
+        "answer":""
+    },
+    {
+        "question":"Give me an example of a time when you had to think on your feet",
+        "answer":""
+    },
+    {
+        "question":"Tell me about a time you failed. How did you deal with the situation?",
+        "answer":""
+    },
+    {
+        "question":"Give me an example of a time you managed numerous responsibilities. How did you handle that?",
+        "answer":""
+    },
+    {
+        "question":"Describe a long-term project that you kept on track. How did you keep everything moving?",
+        "answer":""
+    },
+    {
+        "question":"Tell me about a time your responsibilities got a little overwhelming. What did you do?",
+        "answer":""
+    },
+    {
+        "question":"Tell me about a time you set a goal for yourself. How did you go about ensuring that you would meet your objective?",
+        "answer":""
+    },
+    {
+        "question":"Tell me about a time an unexpected problem derailed your planning. How did you recover?",
+        "answer":""
+    },
+    {
+        "question":"Tell me about a time when you had to rely on written communication to get your ideas across",
+        "answer":""
+    },
+    {
+        "question":"Give me an example of a time when you were able to successfully persuade someone at work to see things your way",
+        "answer":""
+    },
+    {
+        "question":"Describe a time when you were the resident technical expert. What did you do to make sure everyone was able to understand you",
+        "answer":""
+    },
+    {
+        "question":"Give me an example of a time when you had to have a difficult conversation with a frustrated client or colleague. How did you handle the situation",
+        "answer":""
+    },
+    {
+        "question":"Tell me about your proudest professional accomplishment.",
+        "answer":""
+    },
+    {
+        "question":"Describe a time when you saw a problem and took the initiative to correct it?",
+        "answer":""
+    },
+    {
+        "question":"Tell me about a time when you worked under either extremely close supervision or extremely loose supervision. How did you handle that?",
+        "answer":""
+    },
+    {
+        "question":"Give me an example of a time you were able to be creative with your work. What was exciting or difficult about it?",
+        "answer":""
+    },
+    {
+        "question":"Tell me about a time you were dissatisfied in your role. What could have been done to make it better?",
+        "answer":""
     }
 ]
