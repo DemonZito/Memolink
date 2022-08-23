@@ -100,21 +100,6 @@ export const QuestionsPanel = (props: any) => {
               flexDirection: "row",
             }}
           >
-            {questionIndex + 1 === questions.current.length && (
-              <Button
-                style={{
-                  alignSelf: "end",
-                  marginTop: 5,
-                  marginRight: 5,
-                  background: "#a8ffe3",
-                }}
-                variant="contained"
-                onClick={SubmitAnswers}
-                disabled={answerText.length < 100}
-              >
-                Submit
-              </Button>
-            )}
             {questionIndex === 0 && (
               <Button
                 style={{
@@ -146,8 +131,23 @@ export const QuestionsPanel = (props: any) => {
               </Button>
             )}
             <p>
-              {questionIndex}/{questions.current.length}
+              {questionIndex + 1}/{questions.current.length}
             </p>
+            {questionIndex + 1 === questions.current.length && (
+              <Button
+                style={{
+                  alignSelf: "end",
+                  marginTop: 5,
+                  marginRight: 5,
+                  background: "#a8ffe3",
+                }}
+                variant="contained"
+                onClick={SubmitAnswers}
+                disabled={answerText.length < 100}
+              >
+                Submit
+              </Button>
+            )}
             {questionIndex + 1 < questions.current.length && (
               <Button
                 style={{
