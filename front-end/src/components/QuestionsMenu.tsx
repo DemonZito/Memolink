@@ -1,11 +1,7 @@
 import { useState } from "react";
 
 export const QuestionsMenu = (props: any) => {
-  const files = [
-    "cultureFitQuestions",
-    "reactQuestions",
-    "finalInterviewQuestions",
-  ];
+  const files = ["reactQuestions"];
   const list = files.map((f) => (
     <li
       onClick={() => {

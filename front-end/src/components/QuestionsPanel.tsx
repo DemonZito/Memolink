@@ -6,9 +6,12 @@ import {
   TextField,
 } from "@mui/material";
 import React, { useEffect, useRef } from "react";
+import ContentEditable from "react-contenteditable";
 
 export const QuestionsPanel = (props: any) => {
-  const questions = useRef([{ question: "", answer: "" }]);
+  const questions = useRef([
+    { question: "", answer: "", skipped: false, keywords: "" },
+  ]);
 
   const [questionIndex, setQuestionIndex] = React.useState<number>(0);
   const [answerText, setAnswerText] = React.useState<string>("");
@@ -27,10 +30,20 @@ export const QuestionsPanel = (props: any) => {
     }
   }
 
-  function ChangeQuestion(amount: number) {
+  function ChangeQuestion(amount: number, skip: boolean) {
+    questions.current[questionIndex].skipped = skip;
     questions.current[questionIndex].answer = answerText;
     setAnswerText(questions.current[questionIndex + amount].answer);
     setQuestionIndex(questionIndex + amount);
+  }
+
+  function HighlightText(event: any) {
+    setAnswerText(
+      event.currentTarget.textContent.replaceAll(
+        questions.current[questionIndex].keywords,
+        `<mark>${questions.current[questionIndex].keywords}</mark>`
+      )
+    );
   }
 
   function SubmitAnswers() {
@@ -70,27 +83,18 @@ export const QuestionsPanel = (props: any) => {
             flexDirection: "column",
             border: "1px black solid",
             boxShadow: "0px 0px 20px 7px #a8ffe3",
+            borderRadius: 10,
           }}
         >
           <CardHeader title={questions.current[questionIndex].question} />
-          <TextField
-            multiline
-            placeholder="Answer here"
-            maxRows={10}
-            value={answerText}
-            onChange={(e) => {
-              setAnswerText(e.target.value);
-            }}
-            error={answerText.length < 100}
-            helperText={
-              answerText.length < 100
-                ? "Answer must be at least 100 characters long"
-                : ""
-            }
+          <ContentEditable
             style={{
               width: "calc(100% - 10px)",
-              resize: "vertical",
+              border: "1px solid black",
+              borderRadius: "4px",
             }}
+            onChange={HighlightText}
+            html={answerText}
           />
           <span
             style={{
@@ -124,7 +128,7 @@ export const QuestionsPanel = (props: any) => {
                 }}
                 variant="contained"
                 onClick={() => {
-                  ChangeQuestion(-1);
+                  ChangeQuestion(-1, false);
                 }}
               >
                 Back
@@ -143,30 +147,72 @@ export const QuestionsPanel = (props: any) => {
                 }}
                 variant="contained"
                 onClick={SubmitAnswers}
-                disabled={answerText.length < 100}
               >
-                Submit
+                {answerText.length < 100
+                  ? "Submit without answering"
+                  : "Submit"}
               </Button>
             )}
-            {questionIndex + 1 < questions.current.length && (
-              <Button
-                style={{
-                  marginTop: 5,
-                  marginRight: 5,
-                  background: "#a8ffe3",
-                }}
-                variant="contained"
-                onClick={() => {
-                  ChangeQuestion(1);
-                }}
-                disabled={answerText.length < 100}
-              >
-                Next
-              </Button>
-            )}
+            {questionIndex + 1 < questions.current.length &&
+              answerText.length >= 100 && (
+                <Button
+                  style={{
+                    marginTop: 5,
+                    marginRight: 5,
+                    background: "#a8ffe3",
+                  }}
+                  variant="contained"
+                  onClick={() => {
+                    ChangeQuestion(1, false);
+                  }}
+                  disabled={answerText.length < 100}
+                >
+                  Next
+                </Button>
+              )}
+            {questionIndex + 1 < questions.current.length &&
+              answerText.length < 100 && (
+                <Button
+                  style={{
+                    marginTop: 5,
+                    marginRight: 5,
+                    background: "#a8ffe3",
+                  }}
+                  variant="contained"
+                  onClick={() => {
+                    ChangeQuestion(1, true);
+                  }}
+                >
+                  Skip
+                </Button>
+              )}
           </span>
         </div>
       )}
     </div>
   );
 };
+
+/*
+
+ <TextField
+            multiline
+            placeholder="Answer here"
+            maxRows={10}
+            value={answerText}
+            onChange={(e) => {
+              setAnswerText(e.target.value);
+            }}
+            error={answerText.length < 100}
+            helperText={
+              answerText.length < 100
+                ? "Answer must be at least 100 characters long"
+                : ""
+            }
+            style={{
+              width: "calc(100% - 10px)",
+              resize: "vertical",
+            }}
+          />
+
+          */

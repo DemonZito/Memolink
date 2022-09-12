@@ -1,10 +1,14 @@
 [
-    {
-        "question":"Define JSX:",
-        "answer": ""
-    },
-    {
-        "question":"What does a 'Hook' refer to in React?",
-        "answer": ""
-    }
+  {
+    "question": "Define JSX?",
+    "answer": "",
+    "skipped": false,
+    "keywords": "test"
+  },
+  {
+    "question": "What does a 'Hook' refer to in React?",
+    "answer": "",
+    "skipped": false,
+    "keywords": "test"
+  }
 ]
